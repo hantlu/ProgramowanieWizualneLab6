@@ -15,6 +15,9 @@ namespace ProgramowanieWizualneLab6
         public int x, y, krokodyle, dydelfy, czas, szopy;
         Button[,] przyciski;
         string[,] zawartosc;
+        Timer timerczas;
+        int czaspozostaly;
+
         public Gra(int x, int y, int krokodyle, int dydelfy, int czas, int szopy)
         {
             InitializeComponent();
@@ -29,6 +32,17 @@ namespace ProgramowanieWizualneLab6
             zawartosc = new string[x, y];
             Plansza();
             Losuj();
+
+            czaspozostaly = czas;
+            sekundy.Text = "Pozostalo: " + czaspozostaly + " sekundy";
+            sekundy.AutoSize = true;
+            sekundy.Location = new Point((panel_plansza.Width - sekundy.Width) / 2, panel_plansza.Bottom + 10);
+            this.Controls.Add(sekundy);
+
+            timerczas = new Timer();
+            timerczas.Interval = 1000;
+            timerczas.Tick += Timerczas_Tick;
+            timerczas.Start();
         }
 
         private void Plansza()
@@ -148,7 +162,17 @@ namespace ProgramowanieWizualneLab6
                 }
             }
         }
+
+        private void Timerczas_Tick(object sender, EventArgs e)
+        {
+            czaspozostaly--;
+            sekundy.Text = "Pozostalo: " + czaspozostaly + " sekundy";
+            if (czaspozostaly <= 0)
+            {
+                timerczas.Stop();
+                MessageBox.Show("Czas minął! Koniec gry!");
+                this.Close();
+            }
+        }
     }
-
-
 }

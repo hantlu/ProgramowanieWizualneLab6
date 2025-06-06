@@ -39,16 +39,16 @@ namespace ProgramowanieWizualneLab6
 
         private void start_przucisk_Click(object sender, EventArgs e)
         {
-            if (x == 0 || y == 0 || krokodyle == 0 || dydelfy == 0 || czas == 0 || szopy == 0)
-            {
-                MessageBox.Show("Nie ustawiono wszystkich zmiennych", "Blad", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-            else
-            {
+            //if (x == 0 || y == 0 || krokodyle == 0 || dydelfy == 0 || czas == 0 || szopy == 0)
+            //{
+            //    MessageBox.Show("Nie ustawiono wszystkich zmiennych", "Blad", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //}
+            //else
+            //{
                 Gra gra = new Gra(x, y, krokodyle, dydelfy, czas, szopy);
                 gra.Show();
                 this.Hide();
-            }
+            //}
         }
 
         

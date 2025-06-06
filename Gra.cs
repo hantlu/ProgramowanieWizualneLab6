@@ -72,12 +72,12 @@ namespace ProgramowanieWizualneLab6
         {
             Random random = new Random();
             List<Point> pola = new List<Point>();
-
+           
             for (int i = 0; i < x; i++)
                 for (int j = 0; j < y; j++)
                     pola.Add(new Point(i, j));
 
-            pola.OrderBy(p => random.Next()).ToList();
+            pola = pola.OrderBy(p => random.Next()).ToList();
 
             for (int i = 0; i < dydelfy; i++)
                 zawartosc[pola[i].X, pola[i].Y] = "Dydelf";
